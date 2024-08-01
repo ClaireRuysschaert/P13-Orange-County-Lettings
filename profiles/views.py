@@ -1,8 +1,7 @@
 from http.client import HTTPResponse
 from django.http import HttpRequest
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from profiles.models import Profile
-
 
 # Create your views here.
 # Sed placerat quam in pulvinar commodo. Nullam laoreet consectetur ex, sed
@@ -20,6 +19,6 @@ def index(request: HttpRequest) -> HTTPResponse:
 # dignissim congue. Pellentesque habitant morbi tristique senectus et netus et
 # males
 def profile(request: HttpRequest, profile_id: int) -> HTTPResponse:
-    profile = Profile.objects.get(user__id=profile_id)
+    profile = get_object_or_404(Profile, pk=profile_id)
     context = {"profile": profile}
     return render(request, "profile.html", context)

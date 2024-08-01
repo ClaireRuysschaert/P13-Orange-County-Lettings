@@ -8,4 +8,5 @@ urlpatterns = [
     path('lettings/', include('lettings.urls')),
     path('profiles/', include('profiles.urls')),
     path('admin/', admin.site.urls),
+    path('trigger-error/', views.trigger_error_500),
 ]

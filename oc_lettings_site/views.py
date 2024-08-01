@@ -11,3 +11,6 @@ from django.shortcuts import render
 # neque cursus id.
 def index(request) -> HttpResponse:
     return render(request, "index.html")
+
+def trigger_error_500(request) -> HttpResponse:
+    raise Exception("Intentional server error for testing purposes")
