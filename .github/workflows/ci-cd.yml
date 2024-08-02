@@ -28,4 +28,5 @@ jobs:
         echo 'SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}' >> .env
     - name: Run Tests
       run: |
+        echo $PWD
         python manage.py test
