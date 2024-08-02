@@ -21,6 +21,7 @@ Usage:
 from http.client import HTTPResponse
 from django.http import HttpRequest
 from django.shortcuts import render, get_object_or_404
+import sentry_sdk
 from profiles.models import Profile
 
 
@@ -37,9 +38,13 @@ def index(request: HttpRequest) -> HTTPResponse:
     Returns:
         HTTPResponse: The HTTP response object containing the rendered index.html template.
     """
-    profiles_list = Profile.objects.all()
-    context = {"profiles_list": profiles_list}
-    return render(request, "profiles/index.html", context)
+    try:
+        profiles_list = Profile.objects.all()
+        context = {"profiles_list": profiles_list}
+        return render(request, "profiles/index.html", context)
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+        raise
 
 
 # Aliquam sed metus eget nisi tincidunt ornare accumsan eget lac laoreet neque
@@ -58,6 +63,10 @@ def profile(request: HttpRequest, profile_id: int) -> HTTPResponse:
     Returns:
         HTTPResponse: The HTTP response containing the rendered profile template.
     """
-    profile = get_object_or_404(Profile, pk=profile_id)
-    context = {"profile": profile}
-    return render(request, "profile.html", context)
+    try:
+        profile = get_object_or_404(Profile, pk=profile_id)
+        context = {"profile": profile}
+        return render(request, "profile.html", context)
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+        raise

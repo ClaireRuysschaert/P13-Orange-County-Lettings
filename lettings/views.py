@@ -22,6 +22,7 @@ or raises a Http404 exception if the object does not exist.
 from http.client import HTTPResponse
 from django.http import HttpRequest
 from django.shortcuts import render, get_object_or_404
+import sentry_sdk
 from lettings.models import Letting
 
 
@@ -40,9 +41,13 @@ def index(request: HttpRequest) -> HTTPResponse:
     Returns:
         HTTPResponse: The HTTP response object containing the rendered index page.
     """
-    lettings_list = Letting.objects.all()
-    context = {"lettings_list": lettings_list}
-    return render(request, "lettings/index.html", context)
+    try:
+        lettings_list = Letting.objects.all()
+        context = {"lettings_list": lettings_list}
+        return render(request, "lettings/index.html", context)
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+        raise
 
 
 # Cras ultricies dignissim purus, vitae hendrerit ex varius non. In accumsan porta nisl id
@@ -65,9 +70,13 @@ def letting(request: HttpRequest, letting_id: int) -> HTTPResponse:
     Returns:
         HTTPResponse: The HTTP response object containing the rendered letting.html template.
     """
-    letting = get_object_or_404(Letting, pk=letting_id)
-    context = {
-        "title": letting.title,
-        "address": letting.address,
-    }
-    return render(request, "letting.html", context)
+    try:
+        letting = get_object_or_404(Letting, pk=letting_id)
+        context = {
+            "title": letting.title,
+            "address": letting.address,
+        }
+        return render(request, "letting.html", context)
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+        raise

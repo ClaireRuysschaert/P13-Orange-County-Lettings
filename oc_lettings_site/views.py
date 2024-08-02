@@ -1,3 +1,4 @@
+import sentry_sdk
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -19,7 +20,11 @@ def index(request) -> HttpResponse:
     Returns:
         HttpResponse: The rendered response.
     """
-    return render(request, "index.html")
+    try:
+        return render(request, "index.html")
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+        raise
 
 
 def trigger_error_500(request) -> HttpResponse:
@@ -35,4 +40,8 @@ def trigger_error_500(request) -> HttpResponse:
     Returns:
         HttpResponse: The HTTP response object.
     """
-    raise Exception("Intentional server error for testing purposes")
+    try:
+        raise Exception("Intentional server error for testing purposes")
+    except Exception as e:
+        sentry_sdk.capture_exception(e)
+        raise
