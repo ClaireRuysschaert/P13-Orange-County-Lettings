@@ -1,0 +1,9 @@
+htmlcov
+.venv
+.gitignore
+.git
+.coveragerc
+Dockerfile
+README.md
+.pytest_cache
+setup.cfg
