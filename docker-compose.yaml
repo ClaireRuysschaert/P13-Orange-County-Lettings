@@ -6,8 +6,6 @@ services:
       - sqlite_data:/app/db
     ports:
       - "8000:8000"
-    args:
-      IMAGE_TAG: ${IMAGE_TAG}
 
 volumes:
   sqlite_data:
