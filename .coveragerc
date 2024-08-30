@@ -1,6 +1,17 @@
 [run]
+branch = True
+source = .
 omit =
     oc_lettings_site/wsgi.py
     oc_lettings_site/asgi.py
-    profiles/tests.py
-    lettings/tests.py
+    */migrations/*
+    */tests/*
+    manage.py
+    profiles/__init__.py
+    lettings/__init__.py
+    oc_lettings_site/__init__.py
+    oc_lettings_site/migrations/__init__.py
+
+[report]
+show_missing = True
+skip_covered = True
