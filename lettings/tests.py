@@ -25,7 +25,7 @@ class ModelTestCase(TestCase):
     NUMBER = 2
     STREET = "Place de la Comédie"
     CITY = "Bordeaux"
-    STATE = "Gironde"
+    STATE = "Gi"
     ZIP_CODE = 33000
     COUNTRY_ISO_CODE = 250
     TITLE = "Test Title Letting"
@@ -122,7 +122,7 @@ class LettingsViewsTestCase(TestCase):
     NUMBER = 2
     STREET = "Place de la Comédie"
     CITY = "Bordeaux"
-    STATE = "Gironde"
+    STATE = "Gi"
     ZIP_CODE = 33000
     COUNTRY_ISO_CODE = 250
     TITLE = "Test Title Letting"
