@@ -76,7 +76,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "oc_lettings_site.wsgi.application"
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -87,7 +87,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         "NAME": os.path.join(BASE_DIR, "db", "oc-lettings-site.sqlite3"),
 #     }
 # }
-DATABASE_URL = f"postgresql://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}:{os.getenv('POSTGRES_PORT')}/{os.getenv('POSTGRES_DB')}"
+DATABASE_URL = (
+    f"postgresql://{os.getenv('POSTGRES_USER')}:"
+    f"{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}:"
+    f"{os.getenv('POSTGRES_PORT')}/{os.getenv('POSTGRES_DB')}"
+)
 DATABASES = {"default": dj_database_url.config(default=DATABASE_URL, conn_max_age=600)}
 
 # Password validation
