@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://oc-lettings-site-fkk6.onrender.com']
 
 
 # Application definition
@@ -87,12 +87,7 @@ WSGI_APPLICATION = "oc_lettings_site.wsgi.application"
 #     }
 # }
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        # pgsql://USER:PASSWORD@HOST/DBNAME
-        default=f"postgresql://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}:{os.getenv('POSTGRES_PORT')}/{os.getenv('POSTGRES_SITE')}",
-        conn_max_age=600
-    )
+    'default': dj_database_url.config(default={os.getenv('DATABASE_URL')}, conn_max_age=600)
 }       
 
 # Password validation
