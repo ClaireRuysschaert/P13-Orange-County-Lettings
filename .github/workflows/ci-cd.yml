@@ -39,10 +39,11 @@ jobs:
         flake8 .
     - name: Report Coverage
       run: |
-        python manage.py migrate
+        python manage.py migrate --database=default
         python manage.py migrate auth
         python manage.py showmigrations
-        coverage run --rcfile=.coveragerc manage.py test lettings.tests profiles.tests
+        python manage.py test lettings.tests profiles.tests --noinput
+        coverage run --rcfile=.coveragerc manage.py test lettings.tests profiles.tests --noinput
         coverage report --rcfile=.coveragerc
     - name: Check Coverage
       id: coverage-check
