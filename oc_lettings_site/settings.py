@@ -1,4 +1,3 @@
-import dj_database_url
 import os
 from dotenv import load_dotenv
 import sentry_sdk
@@ -81,18 +80,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": os.path.join(BASE_DIR, "db", "oc-lettings-site.sqlite3"),
-#     }
-# }
-DATABASE_URL = (
-    f"postgresql://{os.getenv('POSTGRES_USER')}:"
-    f"{os.getenv('POSTGRES_PASSWORD')}@{os.getenv('POSTGRES_HOST')}:"
-    f"{os.getenv('POSTGRES_PORT')}/{os.getenv('POSTGRES_DB')}"
-)
-DATABASES = {"default": dj_database_url.config(default=DATABASE_URL, conn_max_age=600)}
+DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db", "oc-lettings-site.sqlite3"),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -136,10 +129,7 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+if os.getenv("DEBUG") == "True":
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

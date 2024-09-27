@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+ls
+echo "Building the project..."
 # Exit on error
 set -o errexit
 
