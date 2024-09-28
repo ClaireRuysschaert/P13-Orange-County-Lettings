@@ -34,9 +34,6 @@ jobs:
     - name: Run Lint
       run: |
         flake8 .
-    - name: Collect static files
-      run: |
-        python manage.py collectstatic --noinput
     - name: Report Coverage
       run: |
         echo "DEBUG=$(cat .env | grep DEBUG | cut -d '=' -f2)"
