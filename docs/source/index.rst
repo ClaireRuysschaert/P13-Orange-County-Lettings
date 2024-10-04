@@ -1,23 +1,27 @@
-Welcome to Lumache's documentation!
-===================================
+Bienvenue sur la documentation du site Orange County Lettings !
+===============================================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+Ce projet a été réalisé dans le cadre du parcours Python de la plateforme OpenClassrooms. 
 
-.. note::
+Il s'agit d'un site web permettant à des utilisateurs de mettre leurs biens immobiliers en location. 
 
-   This project is under active development.
+Pour se faire, l'utilisateur de l'application possède un profil public auquel ses biens sont rattachés.
 
-Contents
---------
+Le but de mon travail a été de refactoriser le code source de l'application, de le documenter et de le déployer sur un serveur distant.
+
+.. seealso::
+   Deployed website: `website <https://oclettingsp13-h3a3c0akfbedgnhv.canadacentral-01.azurewebsites.net/>`__
 
 .. toctree::
-
-   usage
-   api
-
+   :maxdepth: 2
+   :caption: Contents:
+   
+   project_description
+   setup
+   quickstart
+   tools_used
+   database_structure
+   interfaces
+   user_guide
+   app_management

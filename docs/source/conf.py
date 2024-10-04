@@ -1,13 +1,16 @@
 import os
 import sys
-
+import django
 
 # Chemin absolu vers le répertoire du projet Django
-sys.path.insert(0, os.path.abspath(".."))
+sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('../..'))
+sys.path.insert(0, os.path.abspath('../../lettings'))
+sys.path.insert(0, os.path.abspath('../../profiles'))
 
 # Configuration de l'environnement Django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "oc_lettings_site.settings")
-
+django.setup()  # Ensure Django is fully initialized
 
 # -- Project information
 

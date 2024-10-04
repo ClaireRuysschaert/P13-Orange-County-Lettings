@@ -143,4 +143,4 @@ Copier l'URL du webhook de l'application et l'utiliser pour créer un nouveau we
 - DOCKER_USERNAME : Nom d'utilisateur du compte Docker
 - DEBUG : Option de settings pour le déploiement 
 
-5. Le déploiement se lance automatique et le site est disponible sur le lien affiché dans "Overview".
+7. Le déploiement se lance automatique et le site est disponible sur le lien affiché dans "Overview".
