@@ -11,6 +11,7 @@ omit =
     lettings/__init__.py
     oc_lettings_site/__init__.py
     oc_lettings_site/migrations/__init__.py
+    lumache.py
 
 [report]
 show_missing = True
